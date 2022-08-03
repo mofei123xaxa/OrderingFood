@@ -1,14 +1,15 @@
 <template>
   <div>
-    我是details页面
+    table
   </div>
 </template>
 
 <script>
 export default {
-  name: "home",
-};
+        name:"table"
+}
 </script>
 
 <style>
+
 </style>

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
+import qs from "qs";
+
 
 Vue.config.productionTip = false
 
@@ -15,6 +17,7 @@ import API from '@/api'
 Vue.use(ElementUI)
 
 Vue.prototype.$API = API
+Vue.prototype.$qs = qs;
 
 new Vue({
   render: h => h(App),

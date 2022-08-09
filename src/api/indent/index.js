@@ -41,3 +41,21 @@ export const reqSoldOuttrue = (id,value)=>request({url:`/api/fromsaleTrue?id=${i
 
 // 更新菜品数据
 export const reqUpDish = (obj)=>request({url:`/api/modifydishes`,method:'post',data:obj})
+
+// 查询全部的订单数据
+export const reqOrder = (page,transac_status)=>request({url:`/api/obtainorder?page=${page}&transac_status=${transac_status}`,method:'get'})
+
+// 获取详细菜品的数据
+export const reqvieworder = (id)=>request({url:`/api/vieworder?id=${id}`,method:'get'})
+
+// 商家接单接口
+export const reqreceiving = (id)=>request({url:`/api/receiving?id=${id}`,method:'get'})
+
+// 待结账接口
+export const reqcheckout = (id,openid,sett_amount,order_no)=>request({url:`/api/checkout?id=${id}&openid=${openid}&sett_amount=${sett_amount}&order_no=${order_no}`,method:"get"});
+
+// 生成新的小程序点单二维码接口
+export const reqQrcode = (table)=>request({url:`/api/qrcode`,method:'post',data:table})
+
+// 获取全部的桌号信息
+export const reqGetqrcode = (page)=>request({url:`/api/getqrcode?page=${page}`,method:'get'})

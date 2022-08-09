@@ -1,12 +1,12 @@
 <template>
   <div>
-    index
+    我是index页面
   </div>
 </template>
 
 <script>
 export default {
-        name:"index"
+  name:"index"
 }
 </script>
 

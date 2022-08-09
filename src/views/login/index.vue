@@ -76,6 +76,7 @@ export default {
           if (loginShop.data.data.length == 0) {
             this.$router.push({ name: "shopMessage" });
           } else {
+            // 去往首页
             localStorage.setItem("company", loginShop.data.data[0].name);
             this.$router.push({ name: "home" });
           }

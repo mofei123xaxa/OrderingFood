@@ -4,7 +4,7 @@
     <el-container>
       <el-header class="homeTop">
         <span>{{ name }}</span>
-        <span><button>退出</button></span>
+        <span><button  @click="add" >退出</button></span>
       </el-header>
       <!-- 左边栏||中间路由 -->
       <el-container class="homeCenter" >
@@ -17,6 +17,7 @@
            <el-menu-item :index="item.id">
             <i :class="item.icon"></i>
             <span slot="title">{{item.title}}</span>
+            <span slot="title" class="indent_number" v-if="index == 1 && showorder > 0 " >{{showorder}}</span>
           </el-menu-item>
          </div>
         </el-menu>
@@ -43,6 +44,7 @@ export default {
       activeIndex: "菜单",// 侧边栏需要的数据
       listName:'',//现在是处于那个路由的
       highlighted:'',//默认高亮的数据
+      showorder:0,//显示接收前端传来的订单信息有几条
       sidebar: [{
 						id: '1',
 						icon: 'el-icon-s-data',
@@ -112,6 +114,9 @@ export default {
         this.$router.push({name:item.router})
       }
     },
+    add(){
+          this.$store.dispatch('order',1)
+    }
   },
   // created(){
   //   localStorage.setItem('id','1')
@@ -120,8 +125,23 @@ export default {
     //获取店铺名称,并且进行展示
     this.name = localStorage.getItem('nuvmenuid')
     // this.$router.push({name:'home'})
-        this.highlighted = localStorage.getItem('id')
+        this.highlighted = localStorage.getItem('id');
+  },
+  created(){
+    this.showorder = localStorage.getItem('order_num')
+  },
+  // 监视属性
+  watch:{
+    // 监视小程序点单信息
+    "$store.state.order"(newValue,oldValue){
+          this.showorder = newValue;
 
+    }
+    // "$store.state.order":{
+    // handler:function(newVal,oldVal){
+
+    // }
+  // }
   },
   beforedestroy() {
     localStorage.removeItem('id')
@@ -198,5 +218,16 @@ body > .el-container {
 }
 .homeLeft {
   text-align: center;
+}
+.indent_number{
+  width: 22px !important ;
+  height: 22px !important ;
+  display: inline-table;
+  background: pink;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 12px;
+	line-height: 22px;
+  margin-left:5px ;
 }
 </style>

@@ -59,3 +59,6 @@ export const reqQrcode = (table)=>request({url:`/api/qrcode`,method:'post',data:
 
 // 获取全部的桌号信息
 export const reqGetqrcode = (page)=>request({url:`/api/getqrcode?page=${page}`,method:'get'})
+
+// 获取前七天的销售额度
+export const reqsalesvolume = ()=>request({url:'/api/salesvolume',method:'get'});

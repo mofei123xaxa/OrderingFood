@@ -118,7 +118,7 @@ export default {
   methods: {
     //获取全部的订单数据
     async getAllorder(page = 1,transac_status = '') {
-      
+      this.loading = true
       let result = await this.$API.index.reqOrder(
         page,
         transac_status
@@ -168,7 +168,7 @@ export default {
           type:'success',
           message:'结账成功'
         })
-        // this.getAllorder();
+        this.getAllorder();
      }
     },
     // 刷新页面回调函数

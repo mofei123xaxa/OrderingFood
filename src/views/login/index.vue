@@ -56,7 +56,6 @@ export default {
       this.loading = true;
       //登录接口
       let result = await this.$API.index.reqLogin(this.form);
-      console.log(result);
       if (result.data.code == 200) {
         // 存储登录token
         localStorage.setItem("token", result.data.data.token);
